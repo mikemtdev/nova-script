@@ -12,7 +12,7 @@
 #     echo USERNAME
 # fi
 
-PROJECTFOLDER="ProjectFolder"
+PROJECTFOLDER="Project"
 FOLDERNAMES=("Programming" "Video" "Music" "Animation")
 FOLDERNAMESPROGRAMMING=("Web" "Node" "Clone" "JS" "React_Native" "Bash")
 
