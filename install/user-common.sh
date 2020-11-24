@@ -33,7 +33,7 @@ sudo dnf update -y
 installFun "curl"
 installFun "vlc"
 installFun "gnome-tweaks"
-installFun "transsmition"
+installFun "transmission"
 installFun "uget" "ugetIntegratorInstall" 
 installFun "codec2"
 
