@@ -17,7 +17,7 @@ FOLDERNAMES=("Programming" "Video" "Music" "Animation")
 FOLDERNAMESPROGRAMMING=("Web" "Node" "Clone" "JS" "React_Native" "Bash")
 
 
-cd  /home/Mikey/
+cd  /home/mikey/
 mkdir $PROJECTFOLDER
 cd $PROJECTFOLDER
 for FOLDER in ${FOLDERNAMES[@]}
