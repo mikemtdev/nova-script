@@ -23,9 +23,21 @@ sudo ~/.fzf/install
 #Installation and setup of Z (Smart Directory Jump)
 
 function installZ(){
-git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+sudo git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 sudo echo 'plugins=( git zsh-z )' >> ~/.zshrc
 }
+function installYarn(){
+    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+    installFun "yarn"
+}
+
+function yarnInstall {
+    sudo yarn $1 add $2
+}
+function intallGlobalPkgsYarn {
+    yarnInstall "global" "create-react-app"
+}
+
 
 sudo dnf update -y
 
@@ -33,6 +45,10 @@ sudo dnf update -y
 installFun "fira-code-fonts"
 installFun "git"
 installFun "util-linux-user"
+installFun "nodejs" 
+installYarn ""
+intallGlobalPkgsYarn 
+
 
 # Terminal (shell) 
 installZsh 
@@ -40,4 +56,4 @@ installFZF
 installZ
 
 # Setting up Powerlevel10K
-p10k configure
+# p10k configure
