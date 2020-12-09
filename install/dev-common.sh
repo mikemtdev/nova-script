@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+# Utility functions
 function installFun(){
     sudo dnf install $1 -y
 }
@@ -39,9 +40,11 @@ function intallGlobalPkgsYarn {
 }
 
 
+# Executing Code
+
+# Updating repositories
 sudo dnf update -y
 
-# Installation Code
 installFun "fira-code-fonts"
 installFun "git"
 installFun "util-linux-user"

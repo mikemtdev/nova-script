@@ -1,24 +1,19 @@
 #! /usr/bin/bash
 
-# Make Directories
-# RootDir ='~/ '
-# echo 'name ' whoami
-# RootDir = "/home/Mikey"
-# if [RootDir]
-# then 
-#     echo "exists"
-# else 
-#     read -p "Enter your username": USERNAME
-#     echo USERNAME
-# fi
+
+
+# Variables  
 
 PROJECTFOLDER="Project"
 FOLDERNAMES=("Programming" "Video" "Music" "Animation")
 FOLDERNAMESPROGRAMMING=("Web" "Node" "Clone" "JS" "React_Native" "Bash")
 
 
-cd  /home/mikey/
+# Code to be executed
+
+cd  
 mkdir $PROJECTFOLDER
+mkdir tempfiles
 cd $PROJECTFOLDER
 for FOLDER in ${FOLDERNAMES[@]}
     do 
