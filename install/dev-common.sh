@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+# Utility functions
 function installFun(){
     sudo dnf install $1 -y
 }
@@ -27,9 +28,11 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 sudo echo 'plugins=( git zsh-z )' >> ~/.zshrc
 }
 
+# Executing Code
+
+# Updating repositories
 sudo dnf update -y
 
-# Installation Code
 installFun "fira-code-fonts"
 installFun "git"
 installFun "util-linux-user"
