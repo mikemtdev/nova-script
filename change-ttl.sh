@@ -51,8 +51,7 @@ show_menu(){
     2.Phone (64)
     3.Other (63)
     4.Lower (46)
-    5.Ping (Test pakets )
-    6.exit
+    5.exit
 
 "
 
@@ -66,8 +65,7 @@ case $EnteredChoice in
     2) PhoneFun ;;
     3) OtherFun ;;
     4) LowestFun ;;
-    5) echo 'ping='ping -c 5'' ;;
-    6) exit 0;;
+    5) exit 0;;
     *) echo -e "${RED}Error...${STD}" && sleep 2
 esac
 }
