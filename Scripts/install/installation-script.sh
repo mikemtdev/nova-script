@@ -10,7 +10,8 @@ OLDIFS=$IFS
 IFS=','
 function installAptFast(){
     echo "$1" "$2" 
- sudo apt-fast install $2
+ sudo apt-fast install $2 -y
+ sudo $1 --fix-broken install -y
 }
 
 function installFromCvs(){
@@ -20,8 +21,8 @@ function installFromCvs(){
     do
         if [ "$install" == "yes" ] 
             then
-            installAptFast "$1" "$software"
-            # sudo $1 --fix-broken install -y
+            installAptFast "$1" "$software" 
+            
         else 
             echo "Not installing  : $software"
         fi
@@ -34,15 +35,29 @@ function curlInstall(){
     $2 
     $3
 }
+function installPowerlevel10K(){
+ sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+}
+
+#Installation and setup of FZF (Fuzzy Search)
+
+function installFZF(){
+sudo git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+sudo ~/.fzf/install --all 
+}
+#Installation and setup of Z (Smart Directory Jump)
+
+function installZ(){
+sudo git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+sudo echo 'plugins=( git zsh-z )' >> ~/.zshrc
+}
 
 function installZsh(){
-    chsh -s $(which zsh)
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 }
 function installYarn(){
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-    installFun "yarn"
+    installAptFast "apt-fast" "yarn"
 }
 
 function yarnInstall {
@@ -52,9 +67,11 @@ function intallGlobalPkgsYarn {
     yarnInstall "global" "create-react-app"
 }
 function installNvmAndSetup(){
-    curlInstall "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh" "bash install_nvm.sh" 
-    exec $SHELL
+    curlInstall "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh" "bash install_nvm.sh " 
+    # exec $SHELL
     nvm install --lts
+    sudo rm -rf install_nvm.sh
+
 }
 
 function configureInstall(){
@@ -68,6 +85,10 @@ function configureInstall(){
     installZsh 
     installFZF 
     installZ
+
+    # configure
+    chsh -s $(which zsh)
+
 }
 
 function installFunCall(){
@@ -99,10 +120,10 @@ if [ "$1" == "apt-fast" ]
 
 elif  [ "$1" == "dnf" ] 
     then 
-    installFunCall "$2"
+    installFunCall "$2"  "$UBUNTUDEV "
 elif  [ "$1" == "apt" ] 
         then 
-        installFunCall "$2"
+        installFunCall "$2" "$UBUNTUDEV "
 else 
     echo "noting happening $2"
 fi
