@@ -1,4 +1,4 @@
-# project-nova-script
+# Project-nova-script
 
 My most useful scripts.
 
@@ -6,15 +6,13 @@ My most useful scripts.
 
 I made these scripts because i got tired of doing the same things over and over after installing a new OS. so I made these scripts to install configure and and setup my system before I start using it my newly installed system or new PC.
 
-## Usage
-
 ### Aliases
 
 Adding aliases to system for the most used aliases.
 
 ### Mkdir
 
-Making folders for my system.
+Making folders for my system based no how I like to folder structure to be.
 
 ### Change-ttl
 
@@ -22,7 +20,23 @@ Changing system ttl on linux to four preferred values.
 
 > \*Note this will be in effect till system restart.
 
+## Usage
+
+    ./nova-script [ scripts/command ] [ package manager ] file/type
+
+They are basically three commands that can be passed
+
+- configure-system
+- install-app
+- set-ttl
+
+      ./nova-script configure-system
+      ./nova-script install-app apt common
+      ./nova-script set-ttl
+
 ### Installation Scripts
+
+This part covers the install-app command and how to it used.
 
 change values in the cvsFiles/Ubuntu-common.csv.
 
@@ -40,26 +54,27 @@ Change the plank and nano to your preferred applications you wish to install.
     nano,yes
     firefox,yes
 
-./installation-script [ package manager ] file/type
-e.g
+###
+
+    ./nova-script install-app [ package manager ] file/type
 
 #### using apt
 
-    ./installation-script apt common
-    ./installation-script apt dev
-    ./installation-script apt dev-setup
+    ./nova-script install-app apt common
+    ./nova-script install-app apt dev
+    ./nova-script install-app apt dev-setup
 
 #### using dnf
 
-    ./installation-script dnf common
-    installation-script dnf dev
-    ./installation-script dnf dev-setup
+    ./nova-script install-app dnf common
+    nova-script install-app dnf dev
+    ./nova-script install-app dnf dev-setup
 
 #### using apt-fast
 
-    ./installation-script apt-fast common
-    installation-script apt-fast dev
-    ./installation-script apt-fast dev-setup
+    ./nova-script install-app apt-fast common
+    nova-script install-app apt-fast dev
+    ./nova-script install-app apt-fast dev-setup
 
 ### CVS files
 

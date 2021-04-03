@@ -133,6 +133,6 @@ alias .5='cd ../../../../..'
 
 #cd to Project/Proramming 
 alias cdpp='cd Projects/Programming/'
-">> ~/.bash_aliases
+"> ~/.bash_aliases
 
 set +x

@@ -2,7 +2,7 @@
 # author: mikemnjovu@gmail.com
 
 
-echo $1 $2  # varible [assed into the script]
+echo "intallation script "$1 $2  # varible [assed into the script]
 UBUNTUCOMMON=cvsFiles/Ubuntu-common.cvs
 UBUNTUDEV=Ubuntu-dev.cvs
 UBUNTUDEVSETUP=Ubuntu-dev-setup.cvs
@@ -75,7 +75,7 @@ function installFunCall(){
         Ubuntufile1=$UBUNTUCOMMON
         Ubuntufile2=$UBUNTUDEV
         Ubuntufile3=$UBUNTUDEVSETUP
-          echo " comaant $1"
+        #   echo " command $1"
         # echo "file3 $Ubuntufile3"
     if [ "$command" == 'common'  ]
         then 
