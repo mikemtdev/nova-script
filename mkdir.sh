@@ -12,13 +12,18 @@
 #     echo USERNAME
 # fi
 
-PROJECTFOLDER="Project"
+PROJECTFOLDER=("Projects" "Build" "Scripts")
 FOLDERNAMES=("Programming" "Video" "Music" "Animation")
 FOLDERNAMESPROGRAMMING=("Web" "Node" "Clone" "JS" "React_Native" "Bash")
 
 
 cd  /home/mikey/
-mkdir $PROJECTFOLDER
+for FOLDER in ${PROJECTFOLDER[@]}
+    do 
+        mkdir $FOLDER
+        echo "created Folders"
+        ls
+done
 cd $PROJECTFOLDER
 for FOLDER in ${FOLDERNAMES[@]}
     do 

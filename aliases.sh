@@ -1,6 +1,8 @@
 #! /usr/bin/bash
 set -x
 touch ~/.bash_aliases
+# touch bash_aliases
+
 
 #Bash Aliases setup
 echo "if [ -e $HOME/.bash_aliases ]; 
