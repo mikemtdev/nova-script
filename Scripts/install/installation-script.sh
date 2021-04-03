@@ -4,8 +4,8 @@
 
 echo "intallation script "$1 $2  # varible [assed into the script]
 UBUNTUCOMMON=cvsFiles/Ubuntu-common.cvs
-UBUNTUDEV=Ubuntu-dev.cvs
-UBUNTUDEVSETUP=Ubuntu-dev-setup.cvs
+UBUNTUDEV=cvsFiles/Ubuntu-dev.cvs
+UBUNTUDEVSETUP=cvsFiles/Ubuntu-dev-setup.cvs
 OLDIFS=$IFS
 IFS=','
 function installAptFast(){
