@@ -1,4 +1,6 @@
 #! /usr/bin/bash
+# author: mikemnjovu@gmail.com
+
 set -x
 touch ~/.bash_aliases
 # touch bash_aliases

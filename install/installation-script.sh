@@ -1,4 +1,6 @@
 #! /usr/bin/bash
+# author: mikemnjovu@gmail.com
+
 
 echo $1 $2  # varible [assed into the script]
 UBUNTUCOMMON=cvsFiles/Ubuntu-common.cvs

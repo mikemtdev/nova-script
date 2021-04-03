@@ -1,4 +1,5 @@
 #! /usr/bin/bash
+# author: mikemnjovu@gmail.com
 
 
 # Run this Script as super user 
