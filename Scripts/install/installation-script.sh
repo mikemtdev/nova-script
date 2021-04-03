@@ -68,7 +68,6 @@ function intallGlobalPkgsYarn {
 }
 function installNvmAndSetup(){
     curlInstall "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh" "bash install_nvm.sh " 
-    # exec $SHELL
     nvm install --lts
     sudo rm -rf install_nvm.sh
 
