@@ -27,11 +27,11 @@ Changing system ttl on linux to four preferred values.
 They are basically three commands that can be passed
 
 - configure-system
-- install-app
+- install-apps
 - set-ttl
 
       ./nova-script configure-system
-      ./nova-script install-app apt common
+      ./nova-script install-apps apt common
       ./nova-script set-ttl
 
 ### Installation Scripts
@@ -56,25 +56,25 @@ Change the plank and nano to your preferred applications you wish to install.
 
 ###
 
-    ./nova-script install-app [ package manager ] file/type
+    ./nova-script install-apps [ package manager ] file/type
 
 #### using apt
 
-    ./nova-script install-app apt common
-    ./nova-script install-app apt dev
-    ./nova-script install-app apt dev-setup
+    ./nova-script install-apps apt common
+    ./nova-script install-apps apt dev
+    ./nova-script install-apps apt dev-setup
 
 #### using dnf
 
-    ./nova-script install-app dnf common
-    nova-script install-app dnf dev
-    ./nova-script install-app dnf dev-setup
+    ./nova-script install-apps dnf common
+    nova-script install-apps dnf dev
+    ./nova-script install-apps dnf dev-setup
 
 #### using apt-fast
 
-    ./nova-script install-app apt-fast common
-    nova-script install-app apt-fast dev
-    ./nova-script install-app apt-fast dev-setup
+    ./nova-script install-apps apt-fast common
+    nova-script install-apps apt-fast dev
+    ./nova-script install-apps apt-fast dev-setup
 
 ### CVS files
 

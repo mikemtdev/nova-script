@@ -55,9 +55,8 @@ sudo echo 'plugins=( git zsh-z )' >> ~/.zshrc
 function installZsh(){
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
-function installYarn(){
-    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-    installAptFast "apt-fast" "yarn"
+function installNpmGlobalPackages(){
+    sudo npm i $1 -g
 }
 
 function yarnInstall {
@@ -75,18 +74,19 @@ function installNvmAndSetup(){
 
 function configureInstall(){
     
-    installNvmAndSetup
+    # installNvmAndSetup
     #Setup yarn
-    installYarn 
+    installNpmGlobalPackages "yarn"
+    installNpmGlobalPackages "nodemon"
     intallGlobalPkgsYarn 
 
     #Terminal 
-    installZsh 
-    installFZF 
-    installZ
+    # installZsh 
+    # installFZF 
+    # installZ
 
     # configure
-    chsh -s $(which zsh)
+    # chsh -s $(which zsh)
 
 }
 
