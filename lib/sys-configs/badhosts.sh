@@ -2,7 +2,7 @@
 # author: mikemnjovu@gmail.com
 
 
-# Run this Script as super user 
+# Run this Script as super user
 
 
 
@@ -17,8 +17,8 @@ cd Badhostsfile
 
 # sudo cp /etc/hosts /etc/hosts.bk
 
-# Pasting the contents of the badhosts.txt to the hosts on system 
-# sudo cat -S Badhosts.txt >> hosts 
+# Pasting the contents of the badhosts.txt to the hosts on system
+# sudo cat -S Badhosts.txt >> hosts
 
 sudo -s cat -s Badhosts.txt >> /etc/hosts
 
@@ -26,8 +26,3 @@ sudo -s cat -s Badhosts.txt >> /etc/hosts
 cd ..
 # Move out of the tempfiles folder to the root
 cd ..
-
-
-
-
-

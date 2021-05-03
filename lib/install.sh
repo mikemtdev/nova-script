@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+# author: mikemnjovu@gmail.com
+
+# MK FOLDER 
+# MK ALIASES FOR ENTRYSCRIPT 
+# COPY FILES TO FOLDER
+# MOVE FOLDER TO SYSTEM 
+
+SOFTWAREFOLDER='Nova-Script'
+
+mkdir SOFTWAREFOLDER
+cd SOFTWAREFOLDER 
+

@@ -10,7 +10,7 @@ echo $packageInstaller  $packages
 
 if [ "$passedCommand" == "configure-system"  ]
     then
-    cd  Scripts/
+    cd  lib/configs/
        bash ./aliases.sh
        bash ./mkdir.sh
        bash ./badhosts.sh
@@ -21,13 +21,13 @@ if [ "$passedCommand" == "configure-system"  ]
 elif [ "$passedCommand" == "set-ttl"  ]
     then
     echo "set-ttl reached"
-    cd Scripts/
+    cd lib/scripts
     bash ./change-ttl.sh
     cd ..
 
 elif [ "$passedCommand" == "install-apps"  ]
     then
-    cd Scripts/install/
+    cd lib/utils/
     bash ./installation-script.sh $packageInstaller $packages
     cd ..
 

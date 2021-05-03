@@ -1,6 +1,4 @@
 #! /usr/bin/bash
-# author: mikemnjovu@gmail.com
-
 # Author: Mikemnjovu@gmail.com
 
 
