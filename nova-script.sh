@@ -1,16 +1,34 @@
-#! /usr/bin/bash
+#!/usr/bin/env bash
 # author: mikemnjovu@gmail.com
+
+#source lib/bash_utility.sh
+#source lib/src/os.sh
+
+
+
 
 
 passedCommand=$1
-packageInstaller=$2
-packages=$3
-echo $passedCommand
-echo $packageInstaller  $packages
+#if [ -n $3 ] 
+#then
+	if [[ "$3" == "common" || "$3" == "dev" || "$3" == 'dev-setup' ]]
+	then 
+	packages=$3
+	fi
+
+#else 
+packagemanager=$2
+#fi
+
+
+echo "This is the command passed $passedCommand"
+echo  "This is the package manager $packagemanager"
+echo  "This is the package $packages"
+
 
 if [ "$passedCommand" == "configure-system"  ]
     then
-    cd  lib/configs/
+    	cd  lib/configs/
        bash ./aliases.sh
        bash ./mkdir.sh
        bash ./badhosts.sh
@@ -27,8 +45,17 @@ elif [ "$passedCommand" == "set-ttl"  ]
 
 elif [ "$passedCommand" == "install-apps"  ]
     then
+ 
+    echo "Install apps"
     cd lib/utils/
-    bash ./installation-script.sh $packageInstaller $packages
+    
+    if [ "$packages" == "common" ]
+    then
+   	 bash ./installation-script.sh  "$packages" "$packagemanager"  
+    else 
+      echo "Test PKG $packages"
+   	 bash ./installation-script.sh  $packagemanager
+    fi
     cd ..
 
 

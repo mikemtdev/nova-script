@@ -1,27 +1,47 @@
 #! /usr/bin/bash
 # author: mikemnjovu@gmail.com
 
+source ../bash-utility/src/os.sh
+PACKAGE=$1
+PKGMANAGER=$2
 
-echo "intallation script "$1 $2  # varible [assed into the script]
+
+
+echo "intallation script package ${PACKAGE} " # varible [assed into the script]
+echo "Other package manager ${PKGMANAGER}"
+THISOS=$(os::detect_linux_distro)
+
+#Ubuntu
 UBUNTUCOMMON=../cvsFiles/Ubuntu-common.cvs
 UBUNTUDEV=../cvsFiles/Ubuntu-dev.cvs
 UBUNTUDEVSETUP=../cvsFiles/Ubuntu-dev-setup.cvs
+
+#Fedora 
+FEDORACOMMON=../cvsFiles/Fedora-CentOS-common.cvs
+FEDORADEV=../cvsFiles/Fedora-CentOS-dev.cvs
+FEDORADEVSETUP=../cvsFiles/Fedora-CentOS-setup.cvs
+
 OLDIFS=$IFS
 IFS=','
 function installAptFast(){
     echo "$1" "$2" 
- sudo apt-fast install $2 -y
+ sudo $1 install $2 -y
  sudo $1 --fix-broken install -y
 }
 
 function installFromCvs(){
-    INPUTFILE=$1 
+	
+   local passedpkgmanager=$1
+    local INPUTFILE=$2 
+    echo " passedpkgmanager passed $passedpkgmanager"
+       echo " Inpufile passed $INPUTFILE"
          [ ! -f $INPUTFILE ] && { echo "$INPUTFILE file not found"; exit 99; }
     while read  software install  
     do
         if [ "$install" == "yes" ] 
             then
-            installAptFast "$1" "$software" 
+           
+            installAptFast "$passedpkgmanager" "$software" 
             
         else 
             echo "Not installing  : $software"
@@ -91,40 +111,81 @@ function configureInstall(){
 }
 
 function installFunCall(){
-        command=$1 
-        Ubuntufile1=$UBUNTUCOMMON
-        Ubuntufile2=$UBUNTUDEV
-        Ubuntufile3=$UBUNTUDEVSETUP
-        #   echo " command $1"
+       local PASSEDPKGMANAGER=$1
+       local PASSEDPAKAGE=$2
+       local OSPKGFILE=$3
+       local Ubuntufile1=$UBUNTUCOMMON
+        local Ubuntufile2=$UBUNTUDEV
+       local Ubuntufile3=$UBUNTUDEVSETUP
+       
+        echo " PASSEDPKGMANAGER $PASSEDPKGMANAGER"
+           echo " PASSEDPAKAGE $PASSEDPAKAGE"
+           
         # echo "file3 $Ubuntufile3"
-    if [ "$command" == 'common'  ]
-        then 
-        installFromCvs "$Ubuntufile1"
-    elif [ "$command" == 'dev'  ]
+        
+        function installbasedonpkg(){
+        local pkgmanager=$1
+        local pkg=$2
+        	if [ "$PASSEDPAKAGE" == 'common'  ]
+		then 
+		installFromCvs "$pkgmanager" "$pkg"
+		    elif [ "$PASSEDPAKAGE" == 'dev'  ]
+			then
+			installFromCvs "$pkgmanager" "$pkg"
+		    elif [ "$PASSEDPAKAGE" == 'dev-setup' ]
+			then
+			installFromCvs "$pkgmanager" "$pkg"
+			configureInstall 
+	    	fi
+        }
+        
+        if [ "$PASSEDPKGMANAGER" == "dnf" ]
+        then	
+  		installbasedonpkg "$PASSEDPKGMANAGER" "$FEDORACOMMON" 
+        elif [ $"$PASSEDPKGMANAGER" == "apt" ]
         then
-        installFromCvs "$Ubuntufile2"
-    elif [ "$command" == 'dev-setup' ]
+        	echo "ab"
+        
+        elif [ "$PASSEDPKGMANAGER" == "apt-fast" ]
         then
-        installFromCvs "$Ubuntufile3"
-        configureInstall 
-    fi
+    		echo "a"
+        fi
+  
            
 }
 
 
+if [ "$2" = "apt-fast" ]
+then 
+	installFunCall "apt-fast"  "$PACKAGE"
+else
+	if [ "$THISOS" = "fedora" ] 
+	then 
+		#echo "$THISOS"
+		#echo "Using dnf as PKG"
+		#echo "this is the pakage passed here! $PACKAGE"
+		installFunCall "dnf"  $PACKAGE
+		
+		
+	elif [ "$THISOS" = "ubuntu" ]
+	then 
+		echo "$THISOS"
+		echo "Using apt as PKG"
+		installFunCall "apt" $PACKAGE
 
-if [ "$1" == "apt-fast" ]
-    then 
-    installFunCall "$2"  "$UBUNTUDEV "
+	elif [ "$THISOS" = "mac-os" ]
+	then
+		echo "$THISOS"
+		installFunCall "brew" $PACKAGE
+	else
+		echo "Not configured for this"
+		echo "noting happening $2"
+	fi
 
-elif  [ "$1" == "dnf" ] 
-    then 
-    installFunCall "$2"  "$UBUNTUDEV "
-elif  [ "$1" == "apt" ] 
-        then 
-        installFunCall "$2" "$UBUNTUDEV "
-else 
-    echo "noting happening $2"
 fi
+
+#   
+
+
 
     
