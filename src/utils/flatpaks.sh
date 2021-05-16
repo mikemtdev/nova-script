@@ -8,7 +8,7 @@ function installFromCvs(){
 
 	
    local passedpkgmanager="flatpak"
-    local INPUTFILE=("com.visualstudio.code" "io.atom.Atom" "io.github.celluloid_player.Celluloid" "flathub com.spotify.Client" "re.sonny.Tangram" "nz.mega.MEGAsync" "org.worldpossible.ScriptLauncher" "com.bitwarden.desktop" "com.belmoussaoui.Decoder")
+    local INPUTFILE=( "com.visualstudio.code" "io.atom.Atom" "io.github.celluloid_player.Celluloid" "flathub com.spotify.Client" "re.sonny.Tangram" "nz.mega.MEGAsync" "org.worldpossible.ScriptLauncher" "com.bitwarden.desktop" "com.belmoussaoui.Decoder" )
     
     
     echo " passedpkgmanager passed $passedpkgmanager"
@@ -18,7 +18,8 @@ function installFromCvs(){
        
       function installAptFast(){
       local $1
-      $passedpkgmanager install  $1 -y 
+      $
+   flatpak install flathub $1 
       	
       }
      #    [ ! -f $INPUTFILE ] && { echo "$INPUTFILE file not found"; exit 99; }
