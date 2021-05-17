@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 # author: mikemnjovu@gmail.com
-set -x 
+# set -x 
 # shellcheck source=../bash-utility/src/os.sh
 source ../../lib/bash-utility/src/os.sh
 PACKAGE=$1
