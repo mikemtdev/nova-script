@@ -9,19 +9,22 @@ set -x
 
 passedCommand=$1
 
-	if [[ "$3" == "common" || "$3" == "dev" || "$3" == 'dev-setup' ]]
-	then 
-	packages=$3
-	fi
+	# if [[ "$3" == "common" || "$3" == "dev" || "$3" == 'dev-setup' ]]
+	# then 
+	packages=$2
+    # else
+    # clear
+    #     echo "No Package"
+	# fi
 
 
-packagemanager=$2
+packagemanager=$3
 
 
 
 echo "This is the command passed $passedCommand"
-echo  "This is the package manager $packagemanager"
 echo  "This is the package $packages"
+echo  "This is the package manager $packagemanager"
 
 
 if [ "$passedCommand" == "configure-system"  ]
@@ -46,12 +49,21 @@ elif [ "$passedCommand" == "install-apps"  ]
     echo "Installing apps"
  (   cd src/utils/ || exit
     
-    if [ "$packages" == "common" ]
+    if [ "$packages" = "common"  ]
     then
+    echo "common"
    	 bash ./installation-script.sh  "$packages" "$packagemanager"  
-    else 
+    elif [ "$packages" = "dev" ]
+    then
+    echo "FlatPak"
+    (
+        pwd
+        # cd src/utils/ || exit
+        bash ./install-flatpaks.sh
+    )
+    else  
       echo "Test PKG $packages"
-   	 bash ./installation-script.sh  "$packagemanager"
+   	#  bash ./installation-script.sh  "$packagemanager"
     fi)
     
 

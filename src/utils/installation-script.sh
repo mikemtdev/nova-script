@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 # author: mikemnjovu@gmail.com
-set -x 
+# set -x 
 # shellcheck source=../bash-utility/src/os.sh
 source ../../lib/bash-utility/src/os.sh
 PACKAGE=$1
@@ -26,7 +26,7 @@ OLDIFS=$IFS
 IFS=','
 function installAptFast(){
     echo "$1" "$2" 
- sudo "$1" install "$2" -y
+ sudo "$1" install "$2" -y || exit 
  sudo "$1" --fix-broken install -y
 }
 
@@ -111,6 +111,7 @@ function configureInstall(){
 
 }
 
+# Packages
 function installFunCall(){
        local PASSEDPKGMANAGER=$1
        local PASSEDPAKAGE=$2
@@ -128,15 +129,19 @@ function installFunCall(){
         local pkgmanager=$1
         local pkg=$2
         	if [ "$PASSEDPAKAGE" == 'common'  ]
-		then 
-		installFromCvs "$pkgmanager" "$pkg"
-		    elif [ "$PASSEDPAKAGE" == 'dev'  ]
-			then
-			installFromCvs "$pkgmanager" "$pkg"
-		    elif [ "$PASSEDPAKAGE" == 'dev-setup' ]
-			then
-			installFromCvs "$pkgmanager" "$pkg"
-			configureInstall 
+            then 
+                installFromCvs "$pkgmanager" "$pkg"
+            elif [ "$PASSEDPAKAGE" == 'dev'  ]
+                then
+                installFromCvs "$pkgmanager" "$pkg"
+                # Installing from flatpak 
+                # Optional 
+                ./install-flatpak.sh
+             
+            elif [ "$PASSEDPAKAGE" == 'dev-setup' ]
+                then
+                installFromCvs "$pkgmanager" "$pkg"
+                configureInstall 
 	    	fi
         }
         
@@ -155,6 +160,7 @@ function installFunCall(){
            
 }
 
+# Package Managers 
 
 if [ "$2" = "apt-fast" ]
 then 
