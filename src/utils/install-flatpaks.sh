@@ -9,7 +9,7 @@
 function install-flatpak () {
 
     #---- Local Variables ----
-local flatpakapps=('com.visualstudio.code' 'io.atom.Atom' 'io.github.celluloid_player.Celluloid' 'flathub com.spotify.Client' 're.sonny.Tangram' 'nz.mega.MEGAsync' 'org.worldpossible.ScriptLauncher' 'com.bitwarden.desktop' 'com.belmoussaoui.Decoder')
+local flatpakapps=('com.visualstudio.code' 'io.atom.Atom' 'io.github.celluloid_player.Celluloid' 'com.spotify.Client' 're.sonny.Tangram' 'nz.mega.MEGAsync' 'org.worldpossible.ScriptLauncher' 'com.bitwarden.desktop' 'com.belmoussaoui.Decoder')
     # This section contains all of the variables you want to use within your function. Be careful not to inadvertently name any of your variables the same as any existing environment variables, as bash scripts do not have function or block scope.
     # If you need scoping, consider using a subshell.
 

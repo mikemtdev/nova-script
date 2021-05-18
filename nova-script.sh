@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # author: mikemnjovu@gmail.com
 # For 
-set -x 
+# set -x 
 
 #source lib/bash_utility.sh
 #source lib/src/os.sh
@@ -21,10 +21,10 @@ passedCommand=$1
 packagemanager=$3
 
 
-
-echo "This is the command passed $passedCommand"
-echo  "This is the package $packages"
-echo  "This is the package manager $packagemanager"
+# This is for debuging 
+# echo "This is the command passed $passedCommand"
+# echo  "This is the package $packages"
+# echo  "This is the package manager $packagemanager"
 
 
 if [ "$passedCommand" == "configure-system"  ]
@@ -55,9 +55,8 @@ elif [ "$passedCommand" == "install-apps"  ]
    	 bash ./installation-script.sh  "$packages" "$packagemanager"  
     elif [ "$packages" = "dev" ]
     then
-    echo "FlatPak"
+    echo "FlatPaks"
     (
-        pwd
         # cd src/utils/ || exit
         bash ./install-flatpaks.sh
     )
