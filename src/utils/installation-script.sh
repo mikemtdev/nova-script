@@ -178,6 +178,9 @@ else
 	then 
 		echo "$THISOS"
 		echo "Using apt as PKG"
+        
+        # TODO: check default pakage installer
+
 		installFunCall "apt" "$PACKAGE"
 	elif [ "$THISOS" = "mac-os" ]
 	then
