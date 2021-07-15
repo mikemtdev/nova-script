@@ -102,12 +102,12 @@ function configureInstall(){
     intallGlobalPkgsYarn 
 
     #Terminal 
-    # installZsh 
-    # installFZF 
-    # installZ
+    installZsh 
+    installFZF 
+    installZ
 
     # configure
-    # chsh -s $(which zsh)
+    chsh -s $(which zsh)
 
 }
 

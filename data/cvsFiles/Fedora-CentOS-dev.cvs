@@ -2,3 +2,4 @@ Software,Install
 nodejs,yes
 git,yes
 npm,yes
+zsh,yes
