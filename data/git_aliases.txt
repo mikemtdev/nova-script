@@ -1,0 +1,21 @@
+[alias]
+    aa = add --all
+    del = branch -D
+    st = status
+    ci = commit
+    cim = 'commit -m'
+    co = checkout
+    cob = checkout -b
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    di = diff
+    res = !git reset --hard 
+    save =!git add -A && git commit -m
+    done = !git push origin HEAD
+    m = merge 
+    mm = merge --no-ff
+    unstage = reset HEAD --
+    last = log -1 HEAD
+[color]  
+    diff = auto  
+    status = auto  
+    branch = auto 
