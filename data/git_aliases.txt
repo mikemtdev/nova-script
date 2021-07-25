@@ -3,6 +3,7 @@
     del = branch -D
     st = status
     ci = commit
+    cl = clone
     cim = 'commit -m'
     co = checkout
     cob = checkout -b
