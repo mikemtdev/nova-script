@@ -1,6 +1,4 @@
 #! /usr/bin/bash
-# author: mikemnjovu@gmail.com
-
 # Author: Mikemnjovu@gmail.com
 
 
@@ -17,16 +15,16 @@ GRAPHICSSUBFOLDERS=("Ux_Ui" "Branding")
 PROGRAMMINGSUBFOLDERS=("Web" "Node" "Clone" "JS" "React_Native" "Bash")
 
 # Erro Massage 
-  NONEXISTANT='does not exist'  
-  EXIST='exist'
+#   NONEXISTANT='does not exist'  
+#   EXIST='exist'
 
 #   <--- Functions -->
 function rootDir() {
-    cd 
+    cd || exit
 }
 # Creating Folder Func
 function makeFolder(){
-    mkdir $FOLDER
+    mkdir "$FOLDER"
     printf "created Folders"
     ls
 }
@@ -35,61 +33,62 @@ function makeFolder(){
 function creatDownloadsSubFolders() {
     DOWNLOADFOLDER="Downloads"
    function createFolderFunc() {
-        for FOLDER in ${DOWNLOADSSUBFOLDERS[@]}
+        for FOLDER in "${DOWNLOADSSUBFOLDERS[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
-   if [ -d $DOWNLOADFOLDER ]
+   (if [ -d $DOWNLOADFOLDER ]
    then
-        cd $DOWNLOADFOLDER
+        cd $DOWNLOADFOLDER || exit
         createFolderFunc ""
     else 
      rootDir "" # ---> Production code
-         mkdir $DOWNLOADFOLDER 
+         mkdir "$DOWNLOADFOLDER "
        if [ -d $DOWNLOADFOLDER ]  
            then
-          cd $DOWNLOADFOLDER
+          cd $DOWNLOADFOLDER || exit
              createFolderFunc "" 
         else
             makeFolder $DOWNLOADFOLDER
-            cd $DOWNLOADFOLDER
+            cd $DOWNLOADFOLDER || exit
             createFolderFunc "" 
        
        fi
     fi
-    cd .. # exit folder
+    cd .. || exit # exit folder
+    )
     pwd
 }
 # Javascript Freamwork
 function creatWebSubFolders() {
     WEB="Web"
    function createFolderFunc() {
-        for FOLDER in ${JAVASCRIPTFREAMWORKS[@]}
+        for FOLDER in "${JAVASCRIPTFREAMWORKS[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
-   if [ -d $WEB ]
+   (if [ -d $WEB ]
    then
-        cd $WEB
+        cd $WEB || exit
         createFolderFunc ""
     else 
      rootDir "" # ---> Production code
-     cd Projects/Programming
+     cd Projects/Programming || exit
          mkdir $WEB 
        if [ -d $WEB ]  
            then
-          cd $WEB
+          cd $WEB || exit
              createFolderFunc "" 
         else
             makeFolder $WEB
-            cd $WEB
+            cd $WEB || exit
             createFolderFunc "" 
        
        fi
     fi
-    cd .. # exit folder
+    )
     pwd
 }
 
@@ -97,26 +96,26 @@ function creatWebSubFolders() {
 function creatMoviesSubFolders() {
     MOVIESDIR="Movies"
    function createFolderFunc() {
-        for FOLDER in ${MOVIES[@]}
+        for FOLDER in "${MOVIES[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
    if [ -d $MOVIESDIR ]
    then
-        cd $MOVIESDIR
+        cd $MOVIESDIR || exit
         createFolderFunc ""
     else 
      rootDir "" # ---> Production code
-        cd Videos/ # ---> Production code
+        cd Videos/ || exit # ---> Production code
          mkdir $MOVIESDIR
        if [ -d $MOVIESDIR ]  
            then
-          cd $MOVIESDIR
+          cd $MOVIESDIR || exit
              createFolderFunc "" 
         else
             makeFolder $MOVIESDIR
-            cd $MOVIESDIR
+            cd $MOVIESDIR || exit
             createFolderFunc "" 
        
        fi
@@ -129,25 +128,25 @@ function creatMoviesSubFolders() {
 function creatVideosSubFolders() {
     VIDEOSDIR="Videos"
    function createFolderFunc() {
-        for FOLDER in ${VIDEOS[@]}
+        for FOLDER in "${VIDEOS[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
    if [ -d $VIDEOSDIR ]
    then
-        cd $VIDEOSDIR
+        cd $VIDEOSDIR || exit
         createFolderFunc ""
     else 
           rootDir "" # ---> Production code
          mkdir $VIDEOSDIR
        if [ -d $VIDEOSDIR ]  
            then
-          cd $VIDEOSDIR
+          cd $VIDEOSDIR || exit
              createFolderFunc "" 
         else
             makeFolder $VIDEOSDIR
-            cd $VIDEOSDIR
+            cd $VIDEOSDIR || exit
             createFolderFunc "" 
        
        fi
@@ -162,25 +161,25 @@ function creatVideosSubFolders() {
 function creatPicturesSubFolders() {
     PICTURESDIR="Pictures"
    function createFolderFunc() {
-        for FOLDER in ${PICTURES[@]}
+        for FOLDER in "${PICTURES[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
    if [ -d $PICTURESDIR ]
    then
-        cd $PICTURESDIR
+        cd $PICTURESDIR || exit
         createFolderFunc ""
     else 
         rootDir "" # ---> Production code
          mkdir $PICTURESDIR
        if [ -d $PICTURESDIR ]  
            then
-          cd $PICTURESDIR
+          cd $PICTURESDIR || exit
              createFolderFunc "" 
         else
             makeFolder $PICTURESDIR
-            cd $PICTURESDIR
+            cd $PICTURESDIR || exit
             createFolderFunc "" 
        
        fi
@@ -194,9 +193,9 @@ function creatPicturesSubFolders() {
 function createHomeFolders() {
    
     # This creates folders on the home Directiory
-    for FOLDER in ${HOMEFOLDERS[@]} 
+    for FOLDER in "${HOMEFOLDERS[@]}" 
     do 
-    makeFolder $FOLDER
+    makeFolder "$FOLDER"
     done 
 
   
@@ -207,8 +206,8 @@ function createHomeFolders() {
     #---- Local Variables ----
 
     #---- Function Logic ----
-    cd $PROJECTFOLDER
-        for FOLDER in ${PROJECTSSUBFOLDERS[@]}
+    cd $PROJECTFOLDER || exit
+        for FOLDER in "${PROJECTSSUBFOLDERS[@]}"
             do 
             makeFolder "${FOLDER}"
         done
@@ -224,18 +223,18 @@ function createHomeFolders() {
 }
 function createProgrammingSubFolders(){
     createFuncProgramming() {
-         for FOLDER in ${PROGRAMMINGSUBFOLDERS[@]}
+         for FOLDER in "${PROGRAMMINGSUBFOLDERS[@]}"
             do 
                 makeFolder "${FOLDER}"
         done
     } 
     if [ -d Programming ] 
     then
-        cd Programming
+        cd Programming || exit
         createFuncProgramming ""
        
     else
-        cd Project/Programming
+        cd Project/Programming || exit
         createFuncProgramming ""
         pwd
     fi
@@ -244,17 +243,17 @@ function createProgrammingSubFolders(){
 }
 function creatGraphicSubFolders() {
    function createFolderFuncGraphics() {
-        for FOLDER in ${GRAPHICSSUBFOLDERS[@]}
+        for FOLDER in "${GRAPHICSSUBFOLDERS[@]}"
         do 
             makeFolder "${FOLDER}"
         done
    }
    if [ -d Graphics ]
    then
-        cd Graphics
+        cd Graphics || exit
         createFolderFuncGraphics ""
     else 
-        cd  /Projects/Graphics/
+        cd  /Projects/Graphics/ || exit
         createFolderFuncGraphics ""   
     fi
 }

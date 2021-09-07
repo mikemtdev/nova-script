@@ -1,0 +1,14 @@
+Software,Install
+plank,yes
+celluloid,yes
+audacious,yes
+curl,yes
+gnome-tweaks,yes
+transmission,yes
+uget,no
+ugetIntegratorInstall,no
+codec2,yes
+fira-code-fonts,yes
+nodejs,yes
+git,yes
+npm,yes

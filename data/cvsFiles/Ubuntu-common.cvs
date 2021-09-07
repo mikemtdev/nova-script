@@ -1,13 +1,11 @@
 Software,Install
 plank,yes
-nano,no
-vim,yes
-axel,no
-vim,yes
+celluloid,yes
+audacious,yes
 curl,yes
 fonts-firacode,yes
-gnome-tweaks,yes   
-transmission,yes   
+gnome-tweaks,yes
+transmission,yes
 uget,yes
 ugetIntegratorInstall,yes
 codec2,yes

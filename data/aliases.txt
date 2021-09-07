@@ -1,18 +1,3 @@
-#! /usr/bin/bash
-# author: mikemnjovu@gmail.com
-
-set -x
-touch ~/.bash_aliases
-# touch bash_aliases
-
-
-#Bash Aliases setup
-echo "if [ -e $HOME/.bash_aliases ]; 
-    then
-     source $HOME/.bash_aliases 
-    fi" >> ~/.bash_aliases
-
-echo "
 alias c='clear'
 #Sorting by file size
 alias lt='ls --human-readable --size -1 -S --classify'
@@ -133,6 +118,3 @@ alias .5='cd ../../../../..'
 
 #cd to Project/Proramming 
 alias cdpp='cd Projects/Programming/'
-"> ~/.bash_aliases
-
-set +x
